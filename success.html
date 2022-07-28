@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/success.css" />
+</head>
+
+<body>
+    <div class="successpage">
+        <div class="content">
+            <img src="images/success.png" alt="" />
+            <p>Payment Successful</p>
+            <p>You paid NGN <span id="price"></span> to GOCASH</p>
+        </div>
+    </div>
+
+    <script>
+        //当窗口大小重新发生变化的时候触发 sddss
+
+        window.onresize = function () {
+            resizeFont();
+        };
+        resizeFont();
+        //重置当前rem的基本参照字体大小
+        function resizeFont() {
+            //当前设备宽度
+            var _w = window.screen.width;
+            console.log(_w)
+            document.documentElement.style.fontSize = _w / 10 + "px";
+        }
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+        });
+        window.onload = function () {
+            history.pushState(null, null, document.URL);
+            var amount = window.localStorage.getItem('amount');
+            document.getElementById("price").innerHTML = amount;
+        }
+    </script>
+</body>
+
+</html>
